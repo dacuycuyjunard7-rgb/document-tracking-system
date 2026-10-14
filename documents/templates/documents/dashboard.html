@@ -1,219 +1,219 @@
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Document Tracking System</title>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard | Document Tracking System</title>
 
-    <link rel="stylesheet" href="{% static 'documents/css/style.css' %}">
-    <script src="{% static 'documents/js/script.js' %}" defer></script>
-</head>
-<body>
-    <div class="app-container">
+        <link rel="stylesheet" href="{% static 'documents/css/style.css' %}">
+        <script src="{% static 'documents/js/script.js' %}" defer></script>
+    </head>
+    <body>
+        <div class="app-container">
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-icon">D</div>
-                <div>
-                    <h2>DocTrack</h2>
-                    <p>Document Management</p>
-                </div>
-            </div>
-
-            <nav class="sidebar-nav">
-                <p class="nav-label">MAIN MENU</p>
-
-                <a href="#" class="nav-link active">
-                    <span>▦</span> Dashboard
-                </a>
-                <a href="#" class="nav-link">
-                    <span>▤</span> Documents
-                </a>
-                <a href="#" class="nav-link">
-                    <span>⇄</span> Routing
-                </a>
-                <a href="#" class="nav-link">
-                    <span>✓</span> Approvals
-                </a>
-                <a href="#" class="nav-link">
-                    <span>↗</span> Releases
-                </a>
-
-                <p class="nav-label">MANAGEMENT</p>
-
-                <a href="#" class="nav-link">
-                    <span>♙</span> Employees
-                </a>
-                <a href="#" class="nav-link">
-                    <span>▥</span> Departments
-                </a>
-                <a href="#" class="nav-link">
-                    <span>▧</span> Reports
-                </a>
-                <a href="#" class="nav-link">
-                    <span>⚙</span> Settings
-                </a>
-            </nav>
-
-            <div class="sidebar-footer">
-                <div class="user-avatar">A</div>
-                <div>
-                    <strong>Administrator</strong>
-                    <p>System Admin</p>
-                </div>
-
-                <form method=post action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit" class="logout-button" aria-label="Logout">
-                        Sign out
-                    </button>
-                </form>
-
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-
-            <header class="topbar">
-                <div>
-                    <h1>Dashboard</h1>
-                    <p>Overview of your document tracking system</p>
-                </div>
-
-                <div class="topbar-actions">
-                    <label class="search-box">
-                        <span>⌕</span>
-                        <input type="search" id="document-search"
-                               placeholder="Search documents...">
-                    </label>
-
-                    <button class="notification-button"
-                            aria-label="Notifications">
-                        ♧
-                        <span class="notification-dot"></span>
-                    </button>
-                </div>
-            </header>
-
-            <section class="welcome-section">
-                <div>
-                    <h2>Welcome back, Administrator</h2>
-                    <p>Here's what's happening with your documents today.</p>
-                </div>
-
-                <button class="primary-button" id="register-document">
-                    + Register Document
-                </button>
-            </section>
-
-            <!-- Statistics -->
-            <section class="stats-grid">
-                <article class="stat-card">
-                    <div class="stat-icon blue">▤</div>
-                    <p>Total Documents</p>
-                    <h2>248</h2>
-                    <span class="stat-note">All registered documents</span>
-                </article>
-
-                <article class="stat-card">
-                    <div class="stat-icon orange">◷</div>
-                    <p>Pending Approval</p>
-                    <h2>18</h2>
-                    <span class="stat-note">Awaiting review</span>
-                </article>
-
-                <article class="stat-card">
-                    <div class="stat-icon purple">⇄</div>
-                    <p>In Transit</p>
-                    <h2>12</h2>
-                    <span class="stat-note">Currently being routed</span>
-                </article>
-
-                <article class="stat-card">
-                    <div class="stat-icon green">✓</div>
-                    <p>Released</p>
-                    <h2>156</h2>
-                    <span class="stat-note">Successfully released</span>
-                </article>
-            </section>
-
-            <!-- Recent Documents -->
-            <section class="content-card">
-                <div class="section-header">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-icon">D</div>
                     <div>
-                        <h2>Recent Documents</h2>
-                        <p>Track the latest registered documents</p>
+                        <h2>DocTrack</h2>
+                        <p>Document Management</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <p class="nav-label">MAIN MENU</p>
+
+                    <a href="{% url 'dashboard' %}" class="nav-link active">
+                        <span>▦</span> Dashboard
+                    </a>
+                    <a href="{% url 'documents_list' %}" class="nav-link">
+                        <span>▤</span> Documents
+                    </a>
+                    <a href="{% url 'routing' %}" class="nav-link">
+                        <span>⇄</span> Routing
+                    </a>
+                    <a href="{%url 'approvals'%}" class="nav-link">
+                        <span>✓</span> Approvals
+                    </a>
+                    <a href="{% url 'releases' %}" class="nav-link">
+                        <span>↗</span> Releases
+                    </a>
+
+                    <p class="nav-label">MANAGEMENT</p>
+
+                    <a href="#" class="nav-link">
+                        <span>♙</span> Employees
+                    </a>
+                    <a href="#" class="nav-link">
+                        <span>▥</span> Departments
+                    </a>
+                    <a href="#" class="nav-link">
+                        <span>▧</span> Reports
+                    </a>
+                    <a href="#" class="nav-link">
+                        <span>⚙</span> Settings
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-avatar">A</div>
+                    <div>
+                        <strong>Administrator</strong>
+                        <p>System Admin</p>
                     </div>
 
-                    <a href="#" class="text-link">View all →</a>
+                    <form method=post action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button" >
+                            Sign out
+                        </button>
+                    </form>
+
                 </div>
+            </aside>
 
-                <div class="table-wrapper">
-                    <table id="documents-table">
-                        <thead>
-                            <tr>
-                                <th>TRACKING NO.</th>
-                                <th>DOCUMENT TITLE</th>
-                                <th>DEPARTMENT</th>
-                                <th>STATUS</th>
-                                <th>DATE</th>
-                            </tr>
-                        </thead>
+            <!-- Main Content -->
+            <main class="main-content">
 
-                        <tbody>
-                            <tr>
-                                <td>DOC-2026-001</td>
-                                <td>Annual Procurement Plan</td>
-                                <td>Administration</td>
-                                <td><span class="status-badge pending">Pending</span></td>
-                                <td>Oct 10, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>DOC-2026-002</td>
-                                <td>Office Supply Request</td>
-                                <td>Finance</td>
-                                <td><span class="status-badge transit">In Transit</span></td>
-                                <td>Oct 09, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>DOC-2026-003</td>
-                                <td>Employee Appointment</td>
-                                <td>Human Resources</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>Oct 08, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>DOC-2026-004</td>
-                                <td>Quarterly Accomplishment Report</td>
-                                <td>Planning</td>
-                                <td><span class="status-badge released">Released</span></td>
-                                <td>Oct 07, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>DOC-2026-005</td>
-                                <td>Travel Order Request</td>
-                                <td>Administration</td>
-                                <td><span class="status-badge pending">Pending</span></td>
-                                <td>Oct 06, 2026</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <header class="topbar">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Overview of your document tracking system</p>
+                    </div>
 
-                    <p id="empty-search" hidden>
-                        No documents match your search.
-                    </p>
-                </div>
-            </section>
+                    <div class="topbar-actions">
+                        <label class="search-box">
+                            <span>⌕</span>
+                            <input type="search" id="document-search"
+                                placeholder="Search documents...">
+                        </label>
 
-            <footer class="page-footer">
-                Document Tracking System · Dashboard
-            </footer>
+                        <button class="notification-button"
+                                aria-label="Notifications">
+                            ♧
+                            <span class="notification-dot"></span>
+                        </button>
+                    </div>
+                </header>
 
-        </main>
-    </div>
-</body>
-</html>
+                <section class="welcome-section">
+                    <div>
+                        <h2>Welcome back, Administrator</h2>
+                        <p>Here's what's happening with your documents today.</p>
+                    </div>
+
+                    <button class="primary-button" id="register-document">
+                        + Register Document
+                    </button>
+                </section>
+
+                <!-- Statistics -->
+                <section class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-icon blue">▤</div>
+                        <p>Total Documents</p>
+                        <h2>248</h2>
+                        <span class="stat-note">All registered documents</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon orange">◷</div>
+                        <p>Pending Approval</p>
+                        <h2>18</h2>
+                        <span class="stat-note">Awaiting review</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon purple">⇄</div>
+                        <p>In Transit</p>
+                        <h2>12</h2>
+                        <span class="stat-note">Currently being routed</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon green">✓</div>
+                        <p>Released</p>
+                        <h2>156</h2>
+                        <span class="stat-note">Successfully released</span>
+                    </article>
+                </section>
+
+                <!-- Recent Documents -->
+                <section class="content-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Recent Documents</h2>
+                            <p>Track the latest registered documents</p>
+                        </div>
+
+                        <a href="#" class="text-link">View all →</a>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table id="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>TRACKING NO.</th>
+                                    <th>DOCUMENT TITLE</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>STATUS</th>
+                                    <th>DATE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>DOC-2026-001</td>
+                                    <td>Annual Procurement Plan</td>
+                                    <td>Administration</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>Oct 10, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td>DOC-2026-002</td>
+                                    <td>Office Supply Request</td>
+                                    <td>Finance</td>
+                                    <td><span class="status-badge transit">In Transit</span></td>
+                                    <td>Oct 09, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td>DOC-2026-003</td>
+                                    <td>Employee Appointment</td>
+                                    <td>Human Resources</td>
+                                    <td><span class="status-badge approved">Approved</span></td>
+                                    <td>Oct 08, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td>DOC-2026-004</td>
+                                    <td>Quarterly Accomplishment Report</td>
+                                    <td>Planning</td>
+                                    <td><span class="status-badge released">Released</span></td>
+                                    <td>Oct 07, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td>DOC-2026-005</td>
+                                    <td>Travel Order Request</td>
+                                    <td>Administration</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>Oct 06, 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p id="empty-search" hidden>
+                            No documents match your search.
+                        </p>
+                    </div>
+                </section>
+
+                <footer class="page-footer">
+                    Document Tracking System · Dashboard
+                </footer>
+
+            </main>
+        </div>
+    </body>
+    </html>

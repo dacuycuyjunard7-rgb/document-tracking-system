@@ -660,9 +660,11 @@ tbody tr:last-child td {
     background: transparent;
     color: #ffffff;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .logout-button:hover {
     background: #243b61;
 }
+
+
