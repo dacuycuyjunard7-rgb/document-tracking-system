@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | DocTrack</title>
+    <link rel="stylesheet" href="{% static 'documents/css/style.css' %}">
+</head>
+<body>
+    <main class="course-page">
+        <h1>Courses</h1>
+        <p>Manage the courses in your system.</p>
+
+        <a href="{% url 'course_create' %}" class="btn">
+            + Add Course
+        </a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.course_code }}</td>
+                    <td>{{ course.course_name }}</td>
+                    <td>
+                        <a href="{% url 'course_update' course.pk %}" class="btn">
+                            Edit
+                        </a>
+                        <a href="{% url 'course_delete' course.pk %}" class="btn">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No courses have been added yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>
+            <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+        </p>
+    </main>
+</body>
+</html>
